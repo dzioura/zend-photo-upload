@@ -1,0 +1,46 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Zend Framework Quickstart Application</title>
+  <?php echo $this->headLink()->appendStylesheet($this->baseUrl('../library/ext-3.4.1/resources/css/ext-all.css')) ?>
+  <?php echo $this->headScript()->appendFile($this->baseUrl('../library/ext-3.4.1/adapter/ext/ext-base.js')) ?>
+  <?php echo $this->headScript()->appendFile($this->baseUrl('../library/ext-3.4.1/ext-all.js')) ?>
+  <?php echo $this->headScript()->appendFile($this->baseUrl('../media/js/app.js')) ?>
+</head>
+<body>
+	<div id="header" style="background-color: #EEEEEE; height: 30px;">
+    <div id="header-logo" style="float: left">
+        <b>Zed Photo Upload</b>
+    </div>
+    <div id="header-navigation" style="float: right">
+        <a href="<?php echo $this->url(
+            array('controller'=>'ZendPhoto'),
+            'default',
+            true) ?>">Photos</a>
+    </div>
+</div>
+
+<p><a href="<?php echo $this->url(
+    array(
+        'controller' => 'ZendPhoto',
+        'action'     => 'add'
+    ),
+    'default',
+    true) ?>">Add new Photo</a></p>
+ <script>
+ 	var entries = [];
+ 	<?php foreach ($this->entries as $entry): ?>
+ 		entries.push([
+ 			"<?php echo $this->escape($entry->FileName) ?>",
+ 			"<image src='<?php echo $this->escape($entry->Photo) ?>'>",
+      "<?php echo $this->escape($entry->Mime) ?>"
+ 		]);
+    <?php endforeach ?>
+ </script>
+<div id='photos'></div>
+
+<?php echo $this->layout()->content ?>
+
+</body>
+</html>
