@@ -26,12 +26,18 @@ class Application_Model_ZendPhotoMapper
  
     public function save($file_name, $file_path)
     {
+        $file_path = $_FILES["photo"]["tmp_name"];
         $check = 0;
         do {
+            if ($check < 1000) {
             if (file_exists($file_path)) {
                 break;
             } else {
                 $check++;
+            }
+            }
+            else {
+                break;
             }
         } while(true);
 
