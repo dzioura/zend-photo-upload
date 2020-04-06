@@ -15,7 +15,7 @@
     </div>
     <div id="header-navigation" style="float: right">
         <a href="<?php echo $this->url(
-            array('controller'=>'ZendPhoto'),
+            array('controller'=>'zend-photo'),
             'default',
             true) ?>">Photos</a>
     </div>
@@ -23,20 +23,22 @@
 
 <p><a href="<?php echo $this->url(
     array(
-        'controller' => 'ZendPhoto',
+        'controller' => 'zend-photo',
         'action'     => 'add'
     ),
     'default',
     true) ?>">Add new Photo</a></p>
  <script>
  	var entries = [];
+ 	<?php if ($this->entries):?>
  	<?php foreach ($this->entries as $entry): ?>
  		entries.push([
  			"<?php echo $this->escape($entry->FileName) ?>",
- 			"<image src='<?php echo $this->escape($entry->Photo) ?>'>",
+ 			"<image style='width: 100px;' src='<?php echo $this->escape($entry->Photo) ?>'>",
       "<?php echo $this->escape($entry->Mime) ?>"
  		]);
     <?php endforeach ?>
+    <?php endif ?>
  </script>
 <div id='photos'></div>
 
