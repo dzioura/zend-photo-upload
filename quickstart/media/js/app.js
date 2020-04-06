@@ -18,6 +18,7 @@ at http://www.sencha.com/contact.
 
 Build date: 2013-04-03 15:07:25
 */
+window.addEventListener('load', function() {
 Ext.onReady(function(){
     var store = new Ext.data.SimpleStore({
         fields: [
@@ -51,5 +52,4 @@ Ext.onReady(function(){
     });
     grid.render('photos');
 });   
-
-setTimeout(Ext.onReady,10)
+},false);
